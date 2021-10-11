@@ -25,6 +25,45 @@ function fizzBuzz(fizzValue, buzzValue) {
     }
     return theArray;
 }
+//Switch option
+function fizzBuzzB(fizzValue, buzzValue) {
+    let theArray = [];
+    let Fizz = false;
+    let Buzz = false;
+    for (let i = 1; i <= 100; i++) {
+        Fizz = i % fizzValue == 0;
+        Buzz = i % buzzValue == 0;
+        switch(true) {
+            case Fizz && Buzz:{
+                theArray.push("FizzBuzz");
+                break;
+            }
+            case Fizz: {
+                theArray.push("Fizz");
+                break;
+            }
+            case Buzz: {
+                theArray.push("Buzz")
+                break;
+            }
+            default: {
+                theArray.push(i);
+                break;
+            }
+        }
+    }
+    return theArray;
+}
+//Ternary operator option
+function fizzBuzzC(fizzValue, buzzValue) {
+    let theArray = [];
+    for (let i = 1; i <= 100; i++) {
+        let value = ((i % fizzValue == 0 ? 'Fizz' : '') + (i % buzzValue == 0 ? 'Buzz' : '') || i );
+        theArray.push(value);        
+    }
+    return theArray;
+}
+
 //Display Results to User
 function displayResults(theArray) {
     //get table body element
