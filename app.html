@@ -3,7 +3,7 @@
 
 
 <head>
-    <title>App Name: A Coding Project By Matt Osberg</title>
+    <title>FIZZ BUZZ: A Coding Project By Matt Osberg</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/favicon.png" class="d-inline-block align-text-top" alt="Matt Osberg Logo" width="30" height="24"> APP NAME</a>
+        <a class="navbar-brand" href="#"><img src="img/favicon.png" class="d-inline-block align-text-top" alt="Matt Osberg Logo" width="30" height="24"> FIZZ BUZZ</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
                     <a class="nav-link" href="code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                    <a class="nav-link" target="_blank" href="https://github.com/mozzy83/FizzBuzz.git">Git Repo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/matt-osberg">About</a>
@@ -54,7 +54,42 @@
 
     <main class="flex-shrink-0">
         <div class="container mt-5">
-
+            <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="row">
+                    <h2>Fizz Buzz App</h2>
+                    <p class="pt-2">A classic JavaScript coding exercise using loops. Write a program that prints the numbers 1 to 100 and for multiples of '3' display <b>"Fizz"</b> instead of the number and for multiples of '5' display <b>"Buzz"</b>. If the number is a multiple of both display <b>"FizzBuzz"</b>.</p>
+                </div>
+                <div class="row pb-4">
+                    <h2 class="mt-4">Instructions</h2>
+                    <p class="pt-2">Enter a fizz and a buzz value. Press the button to see the results appear.</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 border-start border-3">
+                <h4>Enter Values</h4>
+                <form class="row pt-2">
+                    <div class="col-12 col-md-6">
+                        <label for="fizzValue">Fizz Value: </label>
+                        <input class="form-control" type="number" id="fizzValue" value="3" aria-label="fizz value">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="buzzValue">Buzz Value: </label>
+                        <input class="form-control" type="number" id="buzzValue" value="5" aria-label="buzz value">
+                    </div>
+                    <div class="col-12 d-flex justify-content-end pt-4">
+                        <button class="btn btn-dark btn-outline-warning" type="button" id="btnSubmit">Fizz Buzz</button>
+                    </div>
+                </form>
+                <h4 class="mt-4 border-bottom border-3">Results</h4>
+                <div class="">
+                    <table class="table table-sm">
+                        <tbody id="resultsTable">
+                            <!--Results Here-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
         </div>
 
      </main>
@@ -75,19 +110,31 @@
                     <div class="row">
                         <div class="social col"><a href="https://github.com/mozzy83" target="_blank"><i class="fab fa-github fa-2x" title="GitHub"></i></a></div>
                         <div class="social col"><a href="https://www.linkedin.com/in/matt-osberg" target="_blank"><i class="fab fa-linkedin fa-2x" title="LinkedIn"></i></a></div>
-                        <!-- <div class="social col"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x" title="Twitter"></i></a></div>
-                        <div class="social col"><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube fa-2x" title="YouTube"></i></a></div> -->
+                        <div class="social col"><a href="https://discordapp.com/users/876262769215811645" target="_blank"><i class="fab fa-discord fa-2x" title="Discord"></i></a></div>
+                        <!-- <div class="social col"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x" title="Twitter"></i></a></div>-->
                     </div>
                 </div>
             </div>
         </div>
     </footer>
     
+    <template id="fbTemplate">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
     </script>
     <script src="js/site.js"></script>
-
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", getValues);
+    </script>
 </body>
 </html>

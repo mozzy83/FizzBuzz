@@ -1,12 +1,13 @@
 :root {
-    --primary-color: #1d5888;
+    --primary-color: #202223;
     --secondary-color: #ff993b;
-    --dark-color: #292929;
+    --dark-color: #202223;
     --white-color: #e7e7e7;
 }
 
 body {
     color: var(--dark-color);
+    font-family: martel, serif;
 }
 
 nav {
@@ -75,4 +76,17 @@ main>.container {
     left: 0;
     bottom: 0;
     width: 100%;
+}
+
+.Fizz {
+    color: orange;
+}
+
+.Buzz {
+    color: blue;
+}
+
+.FizzBuzz {
+    color: red;
+    font-weight: bold;
 }

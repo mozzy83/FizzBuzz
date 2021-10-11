@@ -3,7 +3,7 @@
 
 
 <head>
-    <title>App Name: A Coding Project By Matt Osberg</title>
+    <title>FIZZ BUZZ: A Coding Project By Matt Osberg</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/favicon.png" class="d-inline-block align-text-top" alt="Matt Osberg Logo" width="30" height="24"> APP NAME</a>
+        <a class="navbar-brand" href="#"><img src="img/favicon.png" class="d-inline-block align-text-top" alt="Matt Osberg Logo" width="30" height="24"> FIZZ BUZZ</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
                     <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                    <a class="nav-link" target="_blank" href="https://github.com/mozzy83/FizzBuzz.git">Git Repo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/matt-osberg">About</a>
@@ -55,22 +55,76 @@
 
         <main class="flex-shrink-0">
             <div class="container py-4 px-5 mt-5">
-                <h2 class="border-1 border-bottom border-dark">The Code for Loopty.</h2>
+                <h2 class="border-1 border-bottom border-dark">The Code for Fizz Buzz.</h2>
                 <div class="row row-cols-1 row-cols-lg-2">
                     <div class="col col-lg-8">
                         <pre class="line-numbers">
                             <code class="language-javascript">
-//Call Hello World
-function helloWorld() {
-    alert("Wello World");
+//Get values from user
+function getValues (){
+    let fizzValue = document.getElementById('fizzValue').value;
+    let buzzValue = document.getElementById('buzzValue').value;
+    //parse into integers
+    fizzValue = parseInt(fizzValue);
+    buzzValue = parseInt(buzzValue);
+    //validation
+    if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
+    //call fizzBuzz
+    let theArray = fizzBuzz(fizzValue, buzzValue);
+    //call displayResults
+    displayResults(theArray);
+    }
+    else{alert('You must enter an integer');}
+}
+//Generate an array setting fizzbuzz values
+function fizzBuzz(fizzValue, buzzValue) {
+    let theArray = [];
+    for (let i = 1; i <= 100; i++){
+        if((i % fizzValue == 0) && (i % buzzValue == 0)) {theArray.push('FizzBuzz');}
+        else if(i % fizzValue == 0) {theArray.push('Fizz');}
+        else if(i % buzzValue == 0) {theArray.push('Buzz');}
+        else {theArray.push(i);}
+    }
+    return theArray;
+}
+//Display Results to User
+function displayResults(theArray) {
+    //get table body element
+    let tableBody = document.getElementById("resultsTable");
+    //get the template row
+    let templateRow = document.getElementById("fbTemplate");
+    //clear table first
+    tableBody.innerHTML = '';
+    for (let i = 0; i < theArray.length; i += 5) {
+        let tableRow = document.importNode(templateRow.content, true);
+        //grab just the td's and put into array
+        let rowCols = tableRow.querySelectorAll('td');
+        rowCols[0].classList.add(theArray[i]);
+        rowCols[0].textContent = theArray[i];
+        rowCols[1].classList.add(theArray[i+1]);
+        rowCols[1].textContent = theArray[i+1];
+        rowCols[2].classList.add(theArray[i+2]);
+        rowCols[2].textContent = theArray[i+2];
+        rowCols[3].classList.add(theArray[i+3]);
+        rowCols[3].textContent = theArray[i+3];
+        rowCols[4].classList.add(theArray[i+4]);
+        rowCols[4].textContent = theArray[i+4];
+
+        tableBody.appendChild(tableRow);
+    }
 }
                             </code>
                         </pre>
                     </div>
                     <div class="col col-lg-4">
-                        <p>The Code is structured in one function.</p>
-                        <h5>Hello World</h5>
-                        <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                        <p>Fizz Buzz is structured in three main functions:</p>
+                        <h5>getValues()</h5>
+                        <p>The initial function retrieves the Fizz and Buzz values entered by the user and parses them into integers. It then performs a simple validation to make sure both the values parsed properly. If the values passed validation they are sent to the next function, fizzBuzz...</p>
+                        <h5>fizzBuzz()</h5>
+                        <p>This function initially declares an array and runs a For Loop to populate it. As it puts each number into the array it checks it to see if it is a multiple of both of the user's values, a multiple of the Fizz value, and finally a multiple of the Buzz value. If it matches any of these criteria it is put into the array as the appropriate string. If it matches none of them it is put in as the number. Once it has looped through 100 times the function returns the array that was built so that it can be passed to the last function, displayResults...
+                        </p>
+                        <h5>displayResults()</h5>
+                        <p>The last function grabs a handle to the empty table we created in the HTML file. It then grabs a handle to the template that we also created. Before beginning to populate our table it makes sure the table is clear. The function then runs a For Loop where it grabs a handle to our template, creates an array of just the td elements inside the template, adds the first 5 values from our original array as the "textContent" of the td elements (which are the table columns), and finally appends those 5 columns to the table. It then loops through with the next 5 values of our array.<br><br>Styling is applied to each td column using the classList.add() method and using the current value of theArray as the td's class value. Three ID tags were added to the css file; Fizz, Buzz, and FizzBuzz. When the current value of theArray is a number there is no styling, but when the value matches a tag in the style sheet the appropriate styling is applied.</p>
                     </div>
                 </div>
             </div>
@@ -92,8 +146,8 @@ function helloWorld() {
                     <div class="row">
                         <div class="social col"><a href="https://github.com/mozzy83" target="_blank"><i class="fab fa-github fa-2x" title="GitHub"></i></a></div>
                         <div class="social col"><a href="https://www.linkedin.com/in/matt-osberg" target="_blank"><i class="fab fa-linkedin fa-2x" title="LinkedIn"></i></a></div>
-                        <!-- <div class="social col"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x" title="Twitter"></i></a></div>
-                        <div class="social col"><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube fa-2x" title="YouTube"></i></a></div> -->
+                        <div class="social col"><a href="https://discordapp.com/users/876262769215811645" target="_blank"><i class="fab fa-discord fa-2x" title="Discord"></i></a></div>
+                        <!-- <div class="social col"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x" title="Twitter"></i></a></div>-->
                     </div>
                 </div>
             </div>
