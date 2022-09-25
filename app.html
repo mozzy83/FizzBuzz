@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Matt Osberg</title>
+    <title>FizzBuzz: A Coding Project By Matt Osberg</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="/img/TransparentFavicon2.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                APP NAME
+                FizzBuzz
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,11 +43,11 @@
                     </li>
                     <!--Edit href to point to Git Repo for project-->
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/mozzy83/FizzBuzz.git">Git Repo</a>
                     </li>
                     <!--Edit about href to point to portfolio site-->
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">About</a>
+                        <a class="nav-link" target="_blank" href="https://mozzy83.netlify.app/">About</a>
                     </li>
                 </ul>
             </div>
@@ -56,7 +56,49 @@
     <!-- ****** Main Section ******-->
     <main class="flex-shrink-0">
         <div class="container mt-5">
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col border-end border-2 border-dark">
+                    <h1>FizzBuzz App</h1>
+                    <h5 class="border-bottom border-2 border-dark pb-4 pt-2">When it counts, you FizzBuzz. A Javascript coding exercise using loops to print the numbers 1 to 100. For multiples of 3, or the Fizz number, display <strong>"Fizz"</strong>. For multiples of 5, or the Buzz number, display <strong>"Buzz"</strong>. For multiples of both display <strong>"FizzBuzz"</strong>.</h4>
+                    <h2>Instructions</h2>
+                    <h5>Enter Fizz and Buzz numbers and click the Submit button to display your results.</h5>
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-6">
+                                    <!--Label and input-->
+                                    <div class="form-group pb-3">
+                                        <label for="fizzVlaue"><h5>Enter Fizz Number</h5></label>
+                                        <input type="text" class="form-control" id="fizzValue" placeholder="Fizz" value="3" aria-label="Enter Fizz Number">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <!--Label and input-->
+                                    <div class="form-group pb-3">
+                                        <label for="buzzValue"><h5>Enter Buzz Number</h5></label>
+                                        <input type="text" class="form-control" id="buzzValue" placeholder="Buzz" value="5" aria-label="Enter Buzz Number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div>
+                                    <button type="button" id="btnSubmit" class="btn btn-outline-dark"><strong>Submit</strong></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <h2 class="mt-5">Results</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tbody id="results">
 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <!-- ****** Footer Section ******-->
@@ -67,7 +109,7 @@
                     <div><span class="text-muted">&copy;2022</span>&nbsp;Matt Osberg | mdosberg83@gmail.com</div>
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
-                    <img src="/img/TransBanner.png" alt="Matt Osberg Logo" height="24">
+                    <a href="https://mozzy83.netlify.app/" target="_blank"><img src="/img/TransBanner.png" alt="Matt Osberg Logo" height="24"></a>
                 </div>
                 <div class="col d-flex aling-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
@@ -78,11 +120,24 @@
             </div>
         </div>
     </footer>
+
+    <template id="fbTemplate">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
     <script src="/js/site.js"></script>
-
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", getValues);
+    </script>
 </body>
 </html>

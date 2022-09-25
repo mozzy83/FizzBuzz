@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Matt Osberg</title>
+    <title>FizzBuzz: A Coding Project By Matt Osberg</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="/img/TransparentFavicon2.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                APP NAME
+                FizzBuzz
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,11 +44,11 @@
                     </li>
                     <!--Edit href to point to Git Repo for project-->
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/mozzy83/FizzBuzz.git">Git Repo</a>
                     </li>
                     <!--Edit about href to point to portfolio site-->
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">About</a>
+                        <a class="nav-link" target="_blank" href="https://mozzy83.netlify.app/">About</a>
                     </li>
                 </ul>
             </div>
@@ -57,22 +57,82 @@
     <!-- ****** Main Section ******-->
     <main class="flex-shrink-0">
         <div class="container py-4 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark py-2">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark py-2">The Code for FizzBuzz.</h2>
             <div class="row row-cols-1 row-cols-lg-2 pt-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call Hello World
-                            function HellowWorld(){
-                                    alert("Hello World");
+                            function getValues(){
+                                let fizzValue = document.getElementById("fizzValue").value;
+                                let buzzValue = document.getElementById("buzzValue").value;
+                            
+                                fizzValue = parseInt(fizzValue);
+                                buzzValue = parseInt(buzzValue);
+                            
+                                if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
+                                    let fbArray = fizzBuzz(fizzValue, buzzValue);
+                                    displayData(fbArray);
+                                }else{
+                                    alert("You must enter integers");
                                 }
+                            }
+                            
+                            function fizzBuzz(fizzValue, buzzValue){
+                                let returnArray = [];
+                            
+                                for (let i = 1; i <= 100; i++) {        
+                                    if(i % fizzValue == 0 && i % buzzValue == 0){
+                                        returnArray.push("FizzBuzz");
+                                    }else if(i % fizzValue == 0){
+                                        returnArray.push("Fizz");
+                                    }else if(i % buzzValue == 0){
+                                        returnArray.push("Buzz")
+                                    }else{
+                                        returnArray.push(i);
+                                    }
+                                }
+                                return returnArray;
+                            }
+                            
+                            function displayData(fbArray){
+                                let tableBody = document.getElementById("results");
+                                let templateRow = document.getElementById("fbTemplate");
+                            
+                                tableBody.innerHTML = "";
+                            
+                                for (let index = 0; index < fbArray.length; index+=5) {
+                                    //bring in a copy of template content
+                                    let tableRow = document.importNode(templateRow.content, true);
+                                    //create an array of all "td" elements in fragment(tableRow)
+                                    let rowCols = tableRow.querySelectorAll("td");
+                                    //populate textContent of array items
+                                    //assign a class for css styling
+                                    rowCols[0].textContent = fbArray[index];
+                                    rowCols[0].classList.add(fbArray[index]);
+                                    rowCols[1].textContent = fbArray[index+1];
+                                    rowCols[1].classList.add(fbArray[index+1]);
+                                    rowCols[2].textContent = fbArray[index+2];
+                                    rowCols[2].classList.add(fbArray[index+2]);
+                                    rowCols[3].textContent = fbArray[index+3];
+                                    rowCols[3].classList.add(fbArray[index+3]);
+                                    rowCols[4].textContent = fbArray[index+4];
+                                    rowCols[4].classList.add(fbArray[index+4]);
+                            
+                                    tableBody.appendChild(tableRow);
+                                }
+                            }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <p>The code is structured in three main functions.</p>
+                    <h5>getValues()</h5>
+                    <p>The first function starts by retrieving the Fizz and Buzz values entered by the user before parsing them into integers. It does a validation to make sure they are integers before sending them to our second function as input parameters...</p>
+                    <h5>fizzBuzz()</h5>
+                    <p>The second main function starts by declaring an empty array. It then uses a 'for loop' to populate that array with values starting at 1 and going to 100. As it populates the array it looks to see if the current value is a multiple of the fizz number, the buzz number, or both. If it is then the value is put into the array accordingly. The array is then returned where it can be used to call our final function...</p>
+                    <h5>displayData()</h5>
+                    <p>The final function first gives us handles to the table that we want to use to display our results as well as the template for the rows that we need to populate. It then ensures that our table does not currently contain any data before iterating through the array that we populated in fizzBuzz().</p>
+                    <p>Each time the 'for loop' iterates it creates a handle to just the five 'td' elements in our table row template. It then creates an array with them. The content of the five 'td' columns for a single row is then populated with the value from the appropriate array index. The array value is also set as a class for each 'td' for CSS styling. The fully populated table row template is then appended to the table body before the next iteration is performed.</p>
                 </div>
             </div>
         </div>
@@ -85,7 +145,7 @@
                     <div><span class="text-muted">&copy;2022</span>&nbsp;Matt Osberg | mdosberg83@gmail.com</div>
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
-                    <img src="/img/TransBanner.png" alt="Matt Osberg Logo" height="24">
+                    <a href="https://mozzy83.netlify.app/" target="_blank"><img src="/img/TransBanner.png" alt="Matt Osberg Logo" height="24"></a>
                 </div>
                 <div class="col d-flex aling-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
